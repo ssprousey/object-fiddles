@@ -166,11 +166,17 @@ var user1 = {
 /*Above you're given a user object. Loop through the user object checking to make sure
 that each value is truthy. If it's not truthy, remove it from the object. */
 
-  //Code Here
+for (prop in user1) {
+  if (user1[prop] == 0 || user1[prop] == null) {
+    delete user1[prop];
+  }
+}
 
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
-  //Code Here
+user1.name = 'Sydney Sprouse';
+user1.username = 'ssprousey';
+user1.pwHash = 'elephant';
 
 
 
@@ -194,11 +200,12 @@ var user2 = {
 //Let's say I, the user, decided to change my name and email address to the following
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
-  //Code Here
+user2.name = 'Tyler S. McGinnis';
+user2.email = 'tyler.mcginnis@devmounta.in';
 
 //Now call the sayEmail method that's on the user object which will alert the users email
 
-  //Code Here
+user2.sayEmail();
 
 
 
@@ -210,17 +217,23 @@ var user2 = {
 
 //Create an empty object called methodCollection.
 
-  //Code Here
-
+var methodCollection = {}
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
-  //Code Here
+ methodCollection.alertHello = function() {
+   alert('hello');
+ }
+ methodCollection.logHello = function() {
+   console.log('hello');
+ }
+
 
 //Now call your alertHello and logHello methods.
 
-  //Code Here
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 
@@ -231,7 +244,21 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // Create a function called makePerson which takes in name, birthday, ssn as its
 // parameters and returns a new object with all of the information that you passed in.
 
-  //Code Here
+function MakePerson(name, bday, ssn) {
+  var person = {};
+  person.name = name;
+  person.bday = bday;
+  person.ssn = ssn;
+  return person;
+};
+
+var firstPerson = MakePerson("Dustin", "3/14", 98234759384759384);
+var secondPerson = MakePerson("Joe", "4/14", 982347594567);
+var thirdPerson = MakePerson("Jake", "5/14", 87);
+
+console.log(firstPerson);
+console.log(secondPerson);
+console.log(thirdPerson);
 
 
 
@@ -241,7 +268,17 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
 // Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke makeCard, you get a brand new credit card.
 
-  //Code Here
+
+  function MakeCard(cardNumber, exp) {
+    var card = {};
+    card.cardNumber = cardNumber;
+    card.exp = exp;
+    return card;
+  };
+
+  var firstCard = MakeCard(2345, "07/17");
+  var secondCard = MakeCard(23456, "08/17");
+  var thirdCard = MakeCard(234567, "09/17");
 
 
 
@@ -254,4 +291,20 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
    Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard. While Object.assign would give you the answer, specRunner requires an answer without using it.
 */
 
-  //Code Here
+var bindCard = function(person, card) {
+  var newCard = {};
+  newCard.name = person.name;
+  newCard.bday = person.bday;
+  newCard.ssn = person.ssn;
+  newCard.cardNumber = card.cardNumber;
+  newCard.exp = card.exp;
+  return newCard;
+};
+
+var card1 = bindCard(firstPerson, firstCard);
+var card2 = bindCard(secondPerson, secondCard);
+var card3 = bindCard(thirdPerson, thirdCard);
+
+console.log("card1: ", card1);
+console.log("card2: ", card2);
+console.log("card3: ", card3);
